@@ -1,5 +1,10 @@
 input.onGesture(Gesture.Shake, function () {
-    udfald = randint(1, maxUdfald)
+    if (snyd) {
+        udfald = maxUdfald
+        snyd = false
+    } else {
+        udfald = randint(1, maxUdfald)
+    }
     if (udfald == 1) {
         basic.showLeds(`
             . . . . .
@@ -85,19 +90,22 @@ input.onGesture(Gesture.Shake, function () {
     }
 })
 input.onButtonPressed(Button.A, function () {
-    maxUdfald = 6
+    if (maxUdfald == 6) {
+        maxUdfald = 10
+    } else {
+        maxUdfald = 6
+    }
     basic.showString("" + (maxUdfald))
     basic.pause(500)
     basic.clearScreen()
 })
 input.onButtonPressed(Button.B, function () {
-    maxUdfald = 10
-    basic.showString("" + (maxUdfald))
-    basic.pause(500)
-    basic.clearScreen()
+    snyd = !(snyd)
 })
 let udfald = 0
 let maxUdfald = 0
+let snyd = false
+snyd = false
 maxUdfald = 6
 basic.showString("Terning")
 basic.pause(500)
