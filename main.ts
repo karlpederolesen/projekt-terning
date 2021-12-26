@@ -88,6 +88,8 @@ input.onGesture(Gesture.Shake, function () {
     } else {
         basic.showString("?")
     }
+    basic.pause(1000)
+    basic.clearScreen()
 })
 input.onButtonPressed(Button.A, function () {
     if (maxUdfald == 6) {
